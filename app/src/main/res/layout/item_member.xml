@@ -103,7 +103,6 @@
                 android:text="90%"
                 android:textColor="@color/Green"
                 android:textStyle="bold" />
-
         </LinearLayout>
 
         <LinearLayout
