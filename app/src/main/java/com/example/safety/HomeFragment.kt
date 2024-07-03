@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -62,8 +63,6 @@ class HomeFragment : Fragment() {
                 "90%",
                 "660"
             ),
-
-
             )
 
         val adapter = MemberAdapter(listMembers)
@@ -72,8 +71,22 @@ class HomeFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
 
+        Log.d("FetchContact89", "fetchContacts: starting")
 
-        val inviteAdapter = InviteAdapter(fetchContacts())
+        Log.d("FetchContact89", "fetchContacts: coroutine end ${listContacts.size}")
+        val inviteAdapter = InviteAdapter(listContacts)
+        Log.d("FetchContact89", "fetchContacts: ending")
+        CoroutineScope(Dispatchers.IO).launch {
+            Log.d("FetchContact89", "fetchContacts: coroutine start")
+            listContacts.addAll(fetchContacts())
+
+            withContext(Dispatchers.Main){
+                inviteAdapter.notifyDataSetChanged()
+            }
+            Log.d("FetchContact89", "fetchContacts: coroutine end ${listContacts.size}")
+        }
+
+
         val inviteRecycler=requireView().findViewById<RecyclerView>(R.id.recycler_invite)
         inviteRecycler.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         inviteRecycler.adapter=inviteAdapter
@@ -82,6 +95,7 @@ class HomeFragment : Fragment() {
     @SuppressLint("Range")
     private fun fetchContacts(): ArrayList<ContactModel> {
 
+        Log.d("FetchContact89", "fetchContacts: start")
         val cr = requireActivity().contentResolver
         val cursor = cr.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null)
 
@@ -130,6 +144,7 @@ class HomeFragment : Fragment() {
             }
 
         }
+        Log.d("FetchContact89", "fetchContacts: end")
         return listContacts
 
     }
