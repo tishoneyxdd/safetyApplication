@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.widget.ImageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -71,6 +70,7 @@ class HomeFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
 
+
         Log.d("FetchContact89", "fetchContacts: starting")
 
         Log.d("FetchContact89", "fetchContacts: coroutine end ${listContacts.size}")
@@ -79,6 +79,8 @@ class HomeFragment : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             Log.d("FetchContact89", "fetchContacts: coroutine start")
             listContacts.addAll(fetchContacts())
+
+            insertDatabaseContacts(listContacts)
 
             withContext(Dispatchers.Main){
                 inviteAdapter.notifyDataSetChanged()
@@ -90,6 +92,13 @@ class HomeFragment : Fragment() {
         val inviteRecycler=requireView().findViewById<RecyclerView>(R.id.recycler_invite)
         inviteRecycler.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         inviteRecycler.adapter=inviteAdapter
+    }
+
+    private suspend fun insertDatabaseContacts(listContacts: ArrayList<ContactModel>) {
+
+        val database =MyFamilyDatabase.getDatabase(requireContext())
+
+        database.contactDao().insertAll(listContacts)
     }
 
     @SuppressLint("Range")
