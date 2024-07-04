@@ -74,17 +74,14 @@ class HomeFragment : Fragment() {
         Log.d("FetchContact89", "fetchContacts: starting")
 
         Log.d("FetchContact89", "fetchContacts: coroutine end ${listContacts.size}")
-        val inviteAdapter = InviteAdapter(listContacts)
+        inviteAdapter = InviteAdapter(listContacts)
+        fetchDatabaseContacts()
         Log.d("FetchContact89", "fetchContacts: ending")
         CoroutineScope(Dispatchers.IO).launch {
             Log.d("FetchContact89", "fetchContacts: coroutine start")
-            listContacts.addAll(fetchContacts())
 
-            insertDatabaseContacts(listContacts)
+            insertDatabaseContacts(fetchContacts())
 
-            withContext(Dispatchers.Main){
-                inviteAdapter.notifyDataSetChanged()
-            }
             Log.d("FetchContact89", "fetchContacts: coroutine end ${listContacts.size}")
         }
 
@@ -92,6 +89,20 @@ class HomeFragment : Fragment() {
         val inviteRecycler=requireView().findViewById<RecyclerView>(R.id.recycler_invite)
         inviteRecycler.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         inviteRecycler.adapter=inviteAdapter
+    }
+
+    private fun fetchDatabaseContacts() {
+        val database =MyFamilyDatabase.getDatabase(requireContext())
+
+         database.contactDao().getAllContacts().observe(viewLifecycleOwner){
+
+             Log.d("FetchContact89", "fetchDatabaseContacts: ")
+                
+             listContacts.clear()
+             listContacts.addAll(it)
+
+             inviteAdapter.notifyDataSetChanged()
+         }
     }
 
     private suspend fun insertDatabaseContacts(listContacts: ArrayList<ContactModel>) {
