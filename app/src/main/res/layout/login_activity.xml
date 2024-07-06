@@ -25,7 +25,7 @@
         android:insetBottom="0dp"
         android:padding="16dp"
         android:textColor="#ffff"
-        android:text="CONTINUE WITH GOOGLE LOGIN"
+        android:text="@string/continue_with_google_login"
         app:cornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         />
