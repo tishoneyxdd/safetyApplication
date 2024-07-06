@@ -2,4 +2,5 @@
     <string name="app_name">Safety</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="defaultwebclientid">128188297759-oele4knfv581r7dhk38tjeskcdupn378.apps.googleusercontent.com</string>
 </resources>
