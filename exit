@@ -1,0 +1,59 @@
+[33mcommit 67e6416aeb0e6c064f1cbde580cafdc0df3a4733[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Mon Jul 8 17:57:06 2024 +0530
+
+    Added Splash Screen
+
+[33mcommit a71f9781a9ff3f53cfd98b046ca959459cb7b94e[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Sun Jul 7 01:23:38 2024 +0530
+
+    Strings change
+
+[33mcommit 8850d2aec1b4caf167a97a4d0666a5f5780ef5f7[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Sat Jul 6 17:21:27 2024 +0530
+
+    Added Authentication FIREBASE
+
+[33mcommit 3e476879208ec15f9632afc85bf2f019bbb97ac7[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Fri Jul 5 21:01:03 2024 +0530
+
+    Firebase Dependencies added
+
+[33mcommit 4627e7c6ad71dd2900c2c27777470e0fd9bb8529[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Thu Jul 4 22:02:09 2024 +0530
+
+    LiveData on ROOM database
+
+[33mcommit 428164c7e80c1a3b1cd8bb192a3864f6cbb1a994[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Thu Jul 4 19:50:12 2024 +0530
+
+    Added Room db insert Functionality
+
+[33mcommit b4627d5a5363568937f888a2a115ce0ab4ecae87[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Wed Jul 3 15:53:11 2024 +0530
+
+    Using coroutines to improve performance
+
+[33mcommit ff74911998f44f33f46a9243bfecc5b5736ab020[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Wed Jul 3 00:11:32 2024 +0530
+
+    Invite More Members Functionality
+
+[33mcommit 1cb04746977030f6f05d5525e558bff0075e9f06[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Tue Jul 2 20:11:59 2024 +0530
+
+    MAPS FUNCTIONALITY
+
+[33mcommit 9f524c464870a41d50d6c6539b82d744ac48f890[m
+Author: Shivam Badhopulu <shivambadhopulu@gmail.com>
+Date:   Tue Jul 2 09:33:00 2024 +0530
+
+    First Commit
