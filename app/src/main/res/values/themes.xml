@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.Safety" parent="Base.Theme.Safety" />
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+<item name="android:windowBackground">@drawable/splash_background</item>
+
+
+    </style>
 </resources>
