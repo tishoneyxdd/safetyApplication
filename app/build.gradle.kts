@@ -38,6 +38,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+        buildFeatures{
+            viewBinding=true
+        }
 }
 
 dependencies {
@@ -67,6 +70,7 @@ dependencies {
     // Also add the dependency for the Google Play services library and specify its version
     implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-firestore-ktx")
 
 //    128188297759-oele4knfv581r7dhk38tjeskcdupn378.apps.googleusercontent.com
 }}

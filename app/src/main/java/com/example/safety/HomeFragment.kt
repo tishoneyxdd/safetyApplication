@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.safety.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,13 +28,15 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    lateinit var binding:FragmentHomeBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
-    ): View? {
-
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding=FragmentHomeBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,9 +71,8 @@ class HomeFragment : Fragment() {
 
         val adapter = MemberAdapter(listMembers)
 
-        val recycler = requireView().findViewById<RecyclerView>(R.id.recycler_member)
-        recycler.layoutManager = LinearLayoutManager(requireContext())
-        recycler.adapter = adapter
+        binding.recyclerMember.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerMember.adapter = adapter
 
 
         Log.d("FetchContact89", "fetchContacts: starting")
@@ -88,9 +90,8 @@ class HomeFragment : Fragment() {
         }
 
 
-        val inviteRecycler=requireView().findViewById<RecyclerView>(R.id.recycler_invite)
-        inviteRecycler.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-        inviteRecycler.adapter=inviteAdapter
+        binding.recyclerInvite.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        binding.recyclerInvite.adapter=inviteAdapter
 
         val threeDots=requireView().findViewById<ImageView>(R.id.icon_three_dots)
         threeDots.setOnClickListener{
