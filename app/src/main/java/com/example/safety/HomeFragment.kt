@@ -28,6 +28,11 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext=context
+    }
+
     lateinit var binding:FragmentHomeBinding
 
     override fun onCreateView(
@@ -71,7 +76,7 @@ class HomeFragment : Fragment() {
 
         val adapter = MemberAdapter(listMembers)
 
-        binding.recyclerMember.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerMember.layoutManager = LinearLayoutManager(mContext)
         binding.recyclerMember.adapter = adapter
 
 
@@ -90,7 +95,7 @@ class HomeFragment : Fragment() {
         }
 
 
-        binding.recyclerInvite.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        binding.recyclerInvite.layoutManager=LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false)
         binding.recyclerInvite.adapter=inviteAdapter
 
         val threeDots=requireView().findViewById<ImageView>(R.id.icon_three_dots)
@@ -103,7 +108,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchDatabaseContacts() {
-        val database =MyFamilyDatabase.getDatabase(requireContext())
+        val database =MyFamilyDatabase.getDatabase(mContext)
 
          database.contactDao().getAllContacts().observe(viewLifecycleOwner){
 
@@ -118,7 +123,7 @@ class HomeFragment : Fragment() {
 
     private suspend fun insertDatabaseContacts(listContacts: ArrayList<ContactModel>) {
 
-        val database =MyFamilyDatabase.getDatabase(requireContext())
+        val database =MyFamilyDatabase.getDatabase(mContext)
 
         database.contactDao().insertAll(listContacts)
     }

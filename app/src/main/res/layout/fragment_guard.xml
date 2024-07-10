@@ -28,8 +28,7 @@
         app:cardBackgroundColor="#f0737b"
         app:cardCornerRadius="16dp"
         app:cardElevation="16dp"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        />
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
     <TextView
         android:id="@+id/text_sos"
@@ -115,6 +114,45 @@
         app:layout_constraintEnd_toEndOf="@id/greencard"
         app:layout_constraintTop_toTopOf="@id/greencard" />
 
+    <EditText
+        android:id="@+id/invite_mail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Enter Email of whom you want to invite"
+        app:layout_constraintBottom_toBottomOf="@id/send_invite"
+        app:layout_constraintEnd_toStartOf="@id/send_invite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/send_invite" />
 
+    <Button
+        android:id="@+id/send_invite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Invite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greencard" />
 
+    <TextView
+        android:id="@+id/your_invites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Your Invites : "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/invite_mail" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/invite_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/your_invites"
+        tools:listitem="@layout/item_invite_mail" />
 </androidx.constraintlayout.widget.ConstraintLayout>
